@@ -23,6 +23,7 @@ figure, blockquote, dl, dd {
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 :is(ul, ol) {
   list-style: none;
+  padding: 0;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -72,6 +73,11 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+/* Make labels and input take up the full width */
+label, input {
+  display: block;
+}
+
 
 /* FONTS */
 
@@ -97,6 +103,7 @@ textarea:not([rows]) {
     --clr-charcoal-grey: hsl(235, 18%, 26%);
     --clr-grey: hsl(231, 7%, 60%);
     --clr-white: hsl(0, 0%, 100%);
+    --clr-pink: hsl(349, 100%, 66%);
 
     /* TYPOGRAPHY */
     --ff-roboto: 'Roboto';
@@ -116,15 +123,94 @@ textarea:not([rows]) {
   height: 1px;
 }
 
+.flow {
+  --flow-space: 1.5em;
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+
+/* GENERAL STYLING */
 
 body {
   font-family: var(--ff-roboto), sans-serif;
   background-color: var(--clr-charcoal-grey);
   color: var(--clr-dark-slate-grey);
+
+  @media (width > 40rem) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+  }
 }
 
 .card {
   background-color: var(--clr-white);
+  max-width: 55rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "image"
+    "text";
+    gap: 2rem;
+
+  @media (width > 40rem) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "text image";
+    padding: 1.5rem;
+    border-radius: 30px;
+  }
+ 
+}
+
+.image-wrapper {
+  grid-area: image;
+
+  img {
+    width: 100%;
+  }
+}
+
+.text-wrapper {
+  grid-area: text;
+  align-self: center;
+  padding: 1rem;
+}
+
+.card-heading {
+  font-size: 2.7rem;
+}
+
+.card-list {
+  --flow-space: 1em;
+}
+
+.card-list__item {
+  line-height: 1.6;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.card-list__item::before {
+  content: url('assets/images/icon-list.svg');
+}
+
+.label {
+  font-weight: var(--fw-700);
+}
+
+#email {
+  --flow-space: .5em;
+  padding: .7em 1.5em;
+  border-radius: 5px;
+  border: 1px solid var(--clr-grey);
+  width: 100%;
 }
 
 .btn {
@@ -133,4 +219,15 @@ body {
   padding: 1em 3em;
   background-color: var(--clr-dark-slate-grey);
   color: var(--clr-white);
+  cursor: pointer;
+  font-weight: var(--fw-700);
+  width: 100%;
+  --flow-space: 1.2em;
+
+  &:is(:focus-visible, :active, :hover) {
+    background: linear-gradient(45deg, var(--clr-pink), var(--clr-tomato));
+    outline: transparent;
+    transition: .1s ease-in-out;
+    box-shadow: 0 2px 5px 3px rgb(0 0 0 /.1);
+  }
 }
