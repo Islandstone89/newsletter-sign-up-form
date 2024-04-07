@@ -27,15 +27,27 @@
         <p class="intro">Join 60,000+ product managers receiving monthly updates on:</p>
 
         <ul class="card-list">
-          <li class="card-list__item">Product discovery and building what matters</li>
-          <li class="card-list__item">Measuring to ensure updates are a success</li>
-          <li class="card-list__item">And much more!</li>
+          <li class="card-list__item">
+            <img src="assets/images/icon-list.svg" alt="" class="card-list__item-icon">Product discovery and building what matters
+          </li>
+
+          <li class="card-list__item">
+            <img src="assets/images/icon-list.svg" alt="" class="card-list__item-icon">Measuring to ensure updates are a success
+          </li>
+
+          <li class="card-list__item">
+           <img src="assets/images/icon-list.svg" alt="" class="card-list__item-icon">And much more!
+          </li>
         </ul><!-- end card-list -->
 
-        <form action="" id="form">
+        <form id="form" novalidate>
           <div class="form-content flow">
-            <label for="email" class="label">Email address</label>
-            <input type="email" name="email" id="email" placeholder="email@company.com" >
+            <div class="label-wrapper">
+              <label for="email" class="label">Email address</label>
+              <span class="error-message" id="error">Valid email required</span>
+            </div><!-- end label-wrapper-->
+
+            <input type="email" name="email" id="email" placeholder="email@company.com" aria-describedby="#error" autocomplete="email">
             <button class="btn">Subscribe to monthly newsletter</button>
           </div><!-- end form-content -->
         </form><!-- end form -->
@@ -43,13 +55,15 @@
       </div><!-- end text-wrapper -->
     </div><!-- end card -->
 
-    <div class="test">
-      <img src="assets/images/icon-success.svg" alt="">
-      <h2>Thanks for subscribing!</h2>
-      <p>A confirmation email has been sent to ash@loremcompany.com. 
-        Please open it and click the button inside to confirm your subscription.</p>
-        <button class="btn">Dismiss message</button>
-    </div>
+    <div class="success-card flow" id="success-message">
+      <div class="success-card-text flow">
+        <img src="assets/images/icon-success.svg" alt="" class="success-icon">
+        <h2 class="card-heading card-heading-test">Thanks for subscribing!</h2>
+        <p class="success-card-paragraph">A confirmation email has been sent to <span class="accent">ash@loremcompany.com</span>. 
+          Please open it and click the button inside to confirm your subscription.</p>
+      </div>
+        <button class="btn btn-success-card">Dismiss message</button>
+    </div><!-- end success-card -->
 
   </main><!-- end main -->
 </body>
