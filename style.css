@@ -279,7 +279,6 @@ body {
   margin-block: 3rem;
   margin-inline: auto;
   display: none;
-  min-height: 100svh;
 
   @media (width > 40rem) {
     border-radius: 30px;
@@ -291,8 +290,6 @@ body {
 .success-card-show {
   display: block;
 }
-
-
 
 .success-card-paragraph {
   line-height: 1.6;
