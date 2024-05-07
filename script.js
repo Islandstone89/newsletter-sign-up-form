@@ -36,4 +36,5 @@ form.addEventListener("submit", (e) => {
 /* Add event listener on dismiss button click */
 dismissBtn.addEventListener("click", (e) => {
     successCard.classList.toggle("success-card-show")
+    mainCard.classList.toggle("main-card-hide")
 })
